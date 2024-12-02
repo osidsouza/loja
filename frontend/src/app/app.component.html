@@ -1,0 +1,58 @@
+<!-- Banner de desconto -->
+<div class="desconto-banner" (click)="redirecionarParaDesconto()">
+    Desconto de 5% na primeira compra
+</div>
+
+<!-- Barra de navegação -->
+<nav class="navbar navbar-expand-sm navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/logo.jpg" alt="Logo" class="logo-img">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./vitrine">Vitrine</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./detalhe">Detalhes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./esqueciSenha">Esqueci Minha Senha</a>
+                </li>
+            </ul>
+
+            <form class="d-flex ms-3" (ngSubmit)="redirecionarParaPesquisa()">
+                <input [(ngModel)]="termoPesquisa" name="pesquisaTermo" class="form-control me-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+
+            <!-- Controle de sessão -->
+            <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
+                <div class="d-flex flex-column text-center me-3">
+                    <a class="nav-link p-0" (click)="redirecionarParaLogin()" style="font-size: 12px;">Entre ou</a>
+                    <a class="nav-link p-0" (click)="redirecionarParaCadastro()" style="font-size: 12px;">Cadastre-se</a>
+                </div>
+            </ng-container>
+
+            <!-- Quando logado -->
+            <ng-template #loggedInTemplate>
+                <a class="nav-link me-3" (click)="logout()">
+                    <i class="bi bi-person-circle"></i> <!-- Ícone de boneco -->
+                </a>
+            </ng-template>
+
+            <a class="nav-link" (click)="redirecionarParaCesta()">
+                <i class="bi bi-cart"></i> <!-- Ícone de carrinho -->
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Conteúdo dinâmico -->
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

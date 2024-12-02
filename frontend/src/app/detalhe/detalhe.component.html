@@ -1,0 +1,13 @@
+<div class="container mt-4">
+    <h2 class="text-center">Detalhes do Produto</h2>
+
+    <div *ngIf="produto" class="card mt-4" style="max-width: 500px; margin: 0 auto;"> <!-- Centraliza o card -->
+        <div class="card-body text-center"> <!-- Centraliza o texto no card -->
+            <h3 class="card-title">{{ produto.nome }}</h3>
+            <img src="../../assets/{{ produto.codigo }}.jpg" alt="{{ produto.nome }}" class="detalhe img-fluid my-3"> <!-- Imagem com espaçamento -->
+            <p class="card-text">{{ produto.descritivo }}</p>
+            <p class="card-text">Preço: R$ {{ produto.valor }}</p>
+            <button class="btn btn-primary mt-3" (click)="comprar()">Comprar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Esqueci Minha Senha</h3>
+        </div>
+        <div class="card-body">
+            <p class="instrucao-esqueci">Insira seu email para recuperar sua senha:</p>
+            <div class="form-group">
+                <label class="email-esqueci" for="email">Email:</label>
+                <input type="email" [(ngModel)]="obj.email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group text-center mt-3">
+                <button class="btn btn-primary" (click)="esqueciSenha()">Enviar e-mail de recuperação</button>
+            </div>
+            <!-- Exibe a mensagem após a tentativa de envio -->
+            <div *ngIf="mensagem" class="text-center text-success mt-2">
+                <b class="mensagem-esqueci">{{ mensagem }}</b>
+            </div>
+        </div>
+    </div>
+</div>

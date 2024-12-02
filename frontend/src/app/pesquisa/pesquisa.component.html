@@ -1,0 +1,24 @@
+<h2>Pesquisar Produto</h2>
+
+<div class="input-group mb-3">
+  <input type="text" [(ngModel)]="termoPesquisa" class="form-control" placeholder="Digite o nome do produto" />
+  <button class="btn btn-primary" (click)="buscarProdutos()">Nova Pesquisa</button>
+</div>
+
+<h3>Resultados da Pesquisa</h3>
+<div *ngIf="produtos.length === 0 && termoPesquisa.length > 0">
+  <p>Nenhum produto encontrado.</p>
+</div>
+
+<div class="row">
+  <div class="col-md-4" *ngFor="let produto of produtos">
+    <div class="card mb-4">
+      <img src="./assets/{{produto.codigo}}.jpg" class="card-img-top" alt="{{produto.nome}}">
+      <div class="card-body">
+        <h4 class="card-title">{{produto.nome}}</h4>
+        <p class="card-text">R$ {{produto.valor | currency}}</p>
+        <button class="btn btn-success" (click)="adicionarProdutoALista(produto)">Adicionar à Cesta</button>
+      </div>
+    </div>
+  </div>
+</div>

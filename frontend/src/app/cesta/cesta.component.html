@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h2 class="text-center">Cesta de Compras</h2>
+  
+    <div class="card mt-4">
+        <div class="card-body">
+            <!-- Exibir os produtos na cesta -->
+            <div *ngFor="let item of itens" class="mb-3">
+                <h4>{{ item.produto.nome }}</h4>
+                <p>Quantidade: 
+                    <input type="number" [(ngModel)]="item.quantidade" (change)="atualizarQuantidade(item, item.quantidade)" min="1" class="form-control" style="display: inline-block;">
+                </p>
+                <p>Valor: R$ {{ item.produto.valor }}</p>
+                <button class="btn btn-danger" (click)="removerProduto(item)">Remover</button>
+                <hr>
+            </div>
+  
+            <!-- Exibir o total -->
+            <h3>Total: R$ {{ total }}</h3>
+  
+            <!-- Botões para limpar a cesta e finalizar compra -->
+            <div class="text-center mt-3">
+                <button class="btn btn-secondary me-2" (click)="limparCesta()">Limpar Cesta</button>
+                <button class="btn btn-primary" (click)="finalizarCompra()">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  

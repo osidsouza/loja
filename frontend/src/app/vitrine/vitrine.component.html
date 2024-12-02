@@ -1,0 +1,19 @@
+<h1 class="text-center">Vitrine</h1>
+<h2 class="text-center">Produtos Disponíveis</h2>
+
+<!-- Exibir produtos filtrados -->
+<div class="row">
+  <div *ngFor="let item of produtosFiltrados" class="col-md-4 mb-4"> <!-- Coluna para responsividade -->
+    <div class="card"> <!-- Card para cada produto -->
+      <img src="./assets/{{item.codigo}}.jpg" class="card-img-top img-fluid" alt="{{item.nome}}"> <!-- Imagem do produto -->
+      <div class="card-body text-center"> <!-- Cor do texto e centralização -->
+        <h4 class="card-title">{{item.nome}}</h4>
+        <p class="card-text">R$ {{item.valor}}</p>
+        <div class="d-flex justify-content-center"> <!-- Centraliza os botões -->
+          <button class="btn btn-primary me-2" (click)="comprar(item)">Comprar</button> <!-- Chamada da função comprar -->
+          <button class="btn btn-secondary" (click)="detalhe(item)">Detalhes</button> <!-- Botão de detalhes -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
